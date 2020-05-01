@@ -10,7 +10,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'preservim/nerdcommenter'
 Plug 'AndrewRadev/discotheque.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'sainnhe/edge'
+Plug 'jacoborus/tender.vim'
 call plug#end()
 
 let mapleader=" "
@@ -35,13 +35,17 @@ set softtabstop=4
 
 set nowrap
 
+" If you have vim >=8.0 or Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
+
 " Theme
-set termguicolors
-set bg=dark
-let g:edge_style = 'neon'
-let g:edge_disable_italic_comment=1
-let g:lightline = {'colorscheme': 'edge'}
-colorscheme edge
+syntax enable
+colorscheme tender
+ 
+" set lighline theme inside lightline config
+let g:lightline = { 'colorscheme': 'tender' }
 
 " Vifm
 nnoremap <leader>vv :Vifm<CR>
@@ -60,8 +64,10 @@ noremap * 5<C-W>+
 noremap <A-+> 4<C-W>>
 noremap <A--> 4<C-W><
 
-noremap! <C-B> {}<Left>
-noremap! <C-S> []<Left>
+noremap! <C-B> {
+noremap! <C-N> }
+noremap! <C-S> [
+noremap! <C-D> ]
 
 noremap n nzz
 noremap N Nzz
@@ -97,6 +103,6 @@ noremap <leader>f :NERDTreeToggle<CR>
 
 noremap <Backspace> O<Esc>
 noremap <Enter> o<Esc>
+noremap <Space><Space> a<Space><Esc>
 
 noremap <leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
-
