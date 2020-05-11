@@ -1,23 +1,8 @@
-" Setup plugins
 let mapleader=" "
 
 source ~/.config/nvim/plugins.vim
 
-source ~/.config/nvim/plug-config/code-fmt.vim
-
-source ~/.config/nvim/plug-config/lightline.vim
-
-source ~/.config/nvim/plug-config/coc.vim
-
-source ~/.config/nvim/plug-config/syntastic.vim
-
-source ~/.config/nvim/plug-config/tagbar.vim
-
-source ~/.config/nvim/plug-config/ultisnips.vim
-
-source ~/.config/nvim/plug-config/undotree.vim
-
-
+set termguicolors
 set number
 set hidden
 set mouse=a
@@ -39,6 +24,28 @@ set undofile
 set incsearch
 set clipboard=unnamedplus
 set shortmess+=c
+" treat dash separated words as a word object
+set iskeyword+=-
+
+source ~/.config/nvim/plug-config/code-fmt.vim
+
+source ~/.config/nvim/plug-config/lightline.vim
+
+source ~/.config/nvim/plug-config/coc.vim
+
+source ~/.config/nvim/plug-config/tagbar.vim
+
+source ~/.config/nvim/plug-config/ultisnips.vim
+
+source ~/.config/nvim/plug-config/undotree.vim
+
+source ~/.config/nvim/plug-config/rainbow.vim
+
+source ~/.config/nvim/plug-config/colorizer.vim
+
+source ~/.config/nvim/plug-config/sneak.vim
+
+source ~/.config/nvim/plug-config/whitespace.vim
 
 colorscheme gruvbox
 
@@ -53,8 +60,7 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 
 map! jj <ESC>
 
-" Tab completion
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+nnoremap <leader><leader> :nohlsearch<cr>
 
 " Navigate tabs
 nnoremap <silent> <Tab> :tabn<CR>
@@ -62,6 +68,10 @@ nnoremap <silent> <S-Tab> :tabp<CR>
 " Navigate buffers
 nnoremap <silent> <C-L> :bnext<CR>
 nnoremap <silent> <C-H> :bprev<CR>
+
+" Create and close buffers
+nnoremap <silent> <C-N> :enew<CR>
+nnoremap <silent> <C-X> :bd<CR>
 
 nnoremap <silent> <M-h> :wincmd h<CR>
 nnoremap <silent> <M-j> :wincmd j<CR>
@@ -79,7 +89,6 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap <Backspace> O<Esc>
 nnoremap <Enter> o<Esc>
-nnoremap <Space><Space> a<Space><Esc>
 
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
@@ -111,3 +120,6 @@ nnoremap <silent> <leader>VI :source ~/.config/nvim/init.vim<CR>:filetype detect
 
 " Make the directory for which the current file should be in
 nnoremap <leader>m :!mkdir -p %:h<CR>
+
+" Change dir to current file
+nnoremap <leader>cd :cd %:p:h<CR>

@@ -122,3 +122,4 @@ alias rm="rm -i"
 alias gs="git status"
 
 export VISUAL=nvim
+export DISPLAY=localhost:0.0

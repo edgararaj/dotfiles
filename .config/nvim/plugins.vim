@@ -9,17 +9,22 @@ endif
 call plug#begin("~/.config/nvim/autoload/plugged")
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Add some color
+Plug 'norcalli/nvim-colorizer.lua'
+"Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
+
+" Better Syntax Support
+Plug 'sheerun/vim-polyglot'
+
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
-Plug 'airblade/vim-gitgutter'
-"Plug 'vim-scripts/The-NERD-tree'
-"Plug 'jistr/vim-nerdtree-tabs'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
 Plug 'SirVer/ultisnips'
@@ -28,7 +33,9 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'dense-analysis/ale'
+Plug 'justinmk/vim-sneak'
+Plug 'AndrewRadev/discotheque.vim'
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
 

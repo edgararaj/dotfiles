@@ -1,0 +1,26 @@
+{
+    // diagnostics
+    "diagnostic.errorSign": "■",
+    "diagnostic.warningSign": "▲",
+    "diagnostic.infoSign": "●",
+    "diagnostic.hintSign": " ",
+
+    // list
+    "list.indicator": ">",
+    "list.selectedSignText": " ",
+
+    // clangd
+    "clangd.arguments": ["--compile-commands-dir='/build/compile_commands.json'", "--clang-tidy"],
+    "clangd.semanticHighlighting": true,
+
+    // explorer
+    "explorer.width": 30,
+    "explorer.icon.enableNerdfont": true,
+    "explorer.previewAction.onHover": false,
+    "explorer.icon.enableVimDevicons": true,
+    "explorer.file.showHiddenFiles": true,
+    "explorer.keyMappings": {
+        "v": "open:vsplit",
+        "s": "open:split"
+    }
+}
