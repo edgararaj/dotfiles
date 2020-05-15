@@ -4,17 +4,46 @@ source ~/.config/nvim/plugins.vim
 
 " auto shit
 set autowrite
+
+" Automatically re-read file if a change was detected outside of vim
 set autoread
 
-set cursorline
+" Change vertical split character to be a space (essentially hide it)
+set fillchars=vert:▏
+
+" Set preview window to appear at bottom
+set splitbelow
+
+" Set floating window to be slightly transparent
+set winbl=10
+
+" Set backups
+set undofile
+set undolevels=3000
+set undoreload=10000
+set backup
+set noswapfile
+set backupdir=~/nvim/backup/
+set undodir=~/nvim/undo/
+
+" === Search === "
+" ignore case when searching
+set ignorecase
+
+" if the search string has an upper case letter in it, the search will be case sensitive
+set smartcase
+
 set termguicolors
+set cursorline
 set number relativenumber
+set noshowcmd
+set noshowmode
+set noruler
+set cmdheight=1
 set hidden
 set mouse=a
 set smarttab
 set smartindent
-set smartcase
-set ignorecase
 set cindent
 set tabstop=4
 set softtabstop=4
@@ -23,11 +52,6 @@ set noexpandtab
 set shell=/usr/bin/bash
 set foldmethod=marker
 set nowrap
-set noswapfile
-set nobackup
-set nowritebackup
-set undofile
-set undodir=~/.vim/undodir
 set incsearch
 set clipboard=unnamedplus
 set shortmess+=c
@@ -40,7 +64,7 @@ set listchars=tab:▶\ ,eol:⤶
 
 source ~/.config/nvim/plug-config/code-fmt.vim
 
-source ~/.config/nvim/plug-config/lightline.vim
+source ~/.config/nvim/plug-config/airline.vim
 
 source ~/.config/nvim/plug-config/coc.vim
 
@@ -58,7 +82,13 @@ source ~/.config/nvim/plug-config/sneak.vim
 
 source ~/.config/nvim/plug-config/whitespace.vim
 
-colorscheme gruvbox
+" Editor theme
+set background=dark
+try
+  colorscheme OceanicNext
+catch
+	echo 'Oceanic colorscheme not installed. I should work after running :PlugInstall'
+endtry
 
 " create scratch book
 command! SB vnew | setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile

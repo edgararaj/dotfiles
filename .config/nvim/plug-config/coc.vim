@@ -152,3 +152,14 @@ nnoremap <leader>cr :CocRestart<CR>
 " Open yank list
 nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
 
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-clangd',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ 'coc-explorer',
+  \ 'coc-lists',
+  \ ]
