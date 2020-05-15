@@ -162,4 +162,5 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-explorer',
   \ 'coc-lists',
+  \ 'coc-rust-analyzer',
   \ ]

@@ -85,6 +85,8 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+
 Plug 'ap/vim-buftabline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -102,6 +104,9 @@ Plug 'AndrewRadev/discotheque.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'mileszs/ack.vim'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+
+" Compress code in one line
+Plug 'AndrewRadev/splitjoin.vim'
 
 " Customized vim status line
 Plug 'vim-airline/vim-airline'
