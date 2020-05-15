@@ -6,12 +6,11 @@
     "diagnostic.hintSign": " ",
 
     // list
-    "list.indicator": ">",
+    "list.indicator": "▶",
     "list.selectedSignText": " ",
 
-    // clangd
-    "clangd.arguments": ["--compile-commands-dir='/build/compile_commands.json'", "--clang-tidy"],
-    "clangd.semanticHighlighting": true,
+	// clang
+	"clangd.semanticHighlighting": true,
 
     // explorer
     "explorer.width": 30,
@@ -22,5 +21,6 @@
     "explorer.keyMappings": {
         "v": "open:vsplit",
         "s": "open:split"
-    }
+    },
+    "clangd.path": "/home/earaujo/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd"
 }

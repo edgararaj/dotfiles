@@ -2,13 +2,19 @@ let mapleader=" "
 
 source ~/.config/nvim/plugins.vim
 
+" auto shit
+set autowrite
+set autoread
+
+set cursorline
 set termguicolors
-set number
+set number relativenumber
 set hidden
 set mouse=a
 set smarttab
 set smartindent
 set smartcase
+set ignorecase
 set cindent
 set tabstop=4
 set softtabstop=4
@@ -19,13 +25,18 @@ set foldmethod=marker
 set nowrap
 set noswapfile
 set nobackup
-set undodir=~/.vim/undodir
+set nowritebackup
 set undofile
+set undodir=~/.vim/undodir
 set incsearch
 set clipboard=unnamedplus
 set shortmess+=c
+set shortmess-=F
+set updatetime=300
 " treat dash separated words as a word object
 set iskeyword+=-
+" display hidden characters
+set listchars=tab:▶\ ,eol:⤶
 
 source ~/.config/nvim/plug-config/code-fmt.vim
 
@@ -61,10 +72,12 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 map! jj <ESC>
 
 nnoremap <leader><leader> :nohlsearch<cr>
+nnoremap <silent> <leader> :Ex<cr>
 
 " Navigate tabs
-nnoremap <silent> <Tab> :tabn<CR>
-nnoremap <silent> <S-Tab> :tabp<CR>
+nnoremap <silent> <Right> :tabn<CR>
+nnoremap <silent> <Left> :tabp<CR>
+nnoremap <silent> <Up> :tabnew<CR>
 " Navigate buffers
 nnoremap <silent> <C-L> :bnext<CR>
 nnoremap <silent> <C-H> :bprev<CR>
@@ -94,6 +107,7 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 vnoremap <C-l> >gv
 vnoremap <C-h> <gv
+vnoremap <leader>s :'<,'>!sort -f<cr>
 
 vnoremap <S-j> 7j
 vnoremap <S-k> 7k
@@ -110,10 +124,10 @@ cnoremap <C-j> <Down>
 " Often utilize vertical splits
 cnoreabbrev v vert
 
-nnoremap <silent> + :exe "resize " . (winheight(0) * 6/5 + 1)<CR>
-nnoremap <silent> - :exe "resize " . (winheight(0) * 5/6 + 1)<CR>
-nnoremap <silent> <M-+> :exe "vert resize " . (winwidth(0) * 6/5 + 1)<CR>
-nnoremap <silent> <M--> :exe "vert resize " . (winwidth(0) * 5/6 + 1)<CR>
+nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2 + 1)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3 + 1)<CR>
+nnoremap <silent> <M-+> :exe "vert resize " . (winwidth(0) * 3/2 + 1)<CR>
+nnoremap <silent> <M--> :exe "vert resize " . (winwidth(0) * 2/3 + 1)<CR>
 
 nnoremap <leader>vi :e ~/.config/nvim/init.vim<CR><C-W>_
 nnoremap <silent> <leader>VI :source ~/.config/nvim/init.vim<CR>:filetype detect<CR>:exe ":echo 'init.vim loaded successfully'"<CR>

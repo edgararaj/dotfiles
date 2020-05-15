@@ -1,7 +1,7 @@
 " auto download vim-plug
 let need_to_install_plugins = 0
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
-	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs 
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
 				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	let need_to_install_plugins = 1
 endif
@@ -12,7 +12,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Add some color
 Plug 'norcalli/nvim-colorizer.lua'
-"Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'luochen1990/rainbow'
 
 " Better Syntax Support
@@ -21,7 +20,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-buftabline'
-"Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -36,6 +35,8 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'justinmk/vim-sneak'
 Plug 'AndrewRadev/discotheque.vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'mileszs/ack.vim'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 call plug#end()
 
