@@ -17,7 +17,6 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'ap/vim-buftabline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -65,8 +64,8 @@ set undolevels=3000
 set undoreload=10000
 set backup
 set noswapfile
-set backupdir=~/nvim/backup/
-set undodir=~/nvim/undo/
+set backupdir=~/tmp/
+set undodir=~/tmp/
 
 " === Search === "
 " ignore case when searching
@@ -446,6 +445,8 @@ nnoremap <silent> <C-N> :tabnew<CR>
 nnoremap <silent> <C-X> :tabclose<CR>
 nnoremap <silent> <C-L> :tabn<CR>
 nnoremap <silent> <C-H> :tabp<CR>
+
+nnoremap <silent> <leader>f :Ex<CR>
 
 nnoremap <leader>rp :%s/\<<C-r><C-w>\>//g<Left><Left>
 
