@@ -6,6 +6,7 @@ call plug#begin("~/.config/nvim/autoload/plugged")
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'luochen1990/rainbow'
 Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
 
 " Better Syntax Support
 Plug 'sheerun/vim-polyglot'
@@ -178,10 +179,10 @@ let g:airline_left_sep = ''
 " Don't show git changes to current file in airline
 let g:airline#extensions#hunks#enabled=0
 
-let g:airline_theme='base16_oceanicnext'
+let g:airline_theme='gruvbox'
 
 catch
-  echo 'Airline not installed. It should work after running :PlugInstall'
+  echo 'Airline not installed. Try running :PlugInstall'
 endtry
 
 "}}}
@@ -329,7 +330,7 @@ nnoremap <silent> <C-F> :CocCommand explorer<CR>
 "nnoremap <silent> <leader>f :CocCommand explorer --preset floating<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
-nnoremap <silent> <C-K> :CocList files<CR>
+"nnoremap <silent> <C-K> :CocList files<CR>
 
 nnoremap <silent> <C-Y>  :<C-u>CocList --normal yank<cr>
 
@@ -418,10 +419,13 @@ let g:strip_whitespace_on_save = 1
 " Editor theme {{{
 set background=dark
 try
-  colorscheme OceanicNext
+  colorscheme gruvbox
 catch
-	echo 'Oceanic colorscheme not installed. I should work after running :PlugInstall'
+	echo 'Gruvbox colorscheme not installed. Try running :PlugInstall'
 endtry
+let g:gruvbox_contrast_dark='hard'
+
+"colorscheme mizore
 "}}}
 
 " create scratch book
