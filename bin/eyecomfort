@@ -1,0 +1,7 @@
+#!/bin/sh
+
+let intensity=6500-$1*500
+
+shift
+redshift -PO $intensity $@
+
