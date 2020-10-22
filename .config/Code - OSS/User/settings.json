@@ -1,0 +1,13 @@
+{
+  "workbench.iconTheme": "redberry-icons",
+  "workbench.colorTheme": "Base16 Tomorrow Dark",
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "editor.formatOnSave": true,
+  "files.autoSave": "onFocusChange",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": false,
+  "editor.renderIndentGuides": false,
+  "editor.detectIndentation": false
+}
