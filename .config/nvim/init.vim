@@ -85,8 +85,9 @@ nnoremap <silent> <M--> :exe "vert resize " . (winwidth(0) * 2/3 + 1)<CR>
 
 nnoremap <C-U> :UndotreeToggle<cr>
 
-nnoremap <leader>ve :sp ~/.config/nvim/init.vim<CR><C-W>_
-nnoremap <silent> <leader>vr :source ~/.config/nvim/init.vim<CR>:filetype detect<CR>:exe ":echo 'init.vim loaded successfully'"<CR>
+let g:init_file = stdpath("config") . "/init.vim"
+exe "nnoremap <leader>ve :tabnew " . g:init_file . "<CR><C-W>_"
+exe "nnoremap <silent> <leader>vr :source " . g:init_file . "<CR>:filetype detect<CR>:exe \":echo 'init.vim loaded successfully!'\"<CR>"
 
 " For local replace
 nnoremap <leader>r *[{V%::s///g<left><left>
@@ -96,42 +97,46 @@ nnoremap <leader>R :%s/\<<C-R><C-W>\>//g<left><left>
 
 au BufNewFile,BufRead *.zig set ft=cpp
 
-function! FormatFile()
-	let l:formatdiff = 1
-	pyf /usr/share/clang/clang-format.py
-endfunction
+if has("unix")
+	function! FormatFile()
+		let l:formatdiff = 1
+		pyf /usr/share/clang/clang-format.py
+	endfunction
 
-autocmd BufWritePre *.c,*.h,*.cc,*.cpp call FormatFile()
+	autocmd BufWritePre *.c,*.h,*.cc,*.cpp call FormatFile()
+endif
 
+
+if has("unix")
 " automatic header {{{
+	function! PutHeader()
+		exe "so " . stdpath("config") . "/c_header.txt"
+		exe "g/@file.*/s//@file " .expand("%")
+		exe "g/@date.*/s//@date " .strftime("%d-%m-%Y")
+		exe "g/Copyright.*/s//Copyright " .strftime("%Y")
+		execute "normal ma"
+		exe "g/@modified.*/s/@modified.*/@modified " .strftime("%c")
+		execute "normal `a"
+	endfunction
 
-function! PutHeader()
-	so ~/.config/nvim/c_header.txt
-	exe "g/@file.*/s//@file " .expand("%")
-	exe "g/@date.*/s//@date " .strftime("%d-%m-%Y")
-	exe "g/Copyright.*/s//Copyright " .strftime("%Y")
-	execute "normal ma"
-	exe "g/@modified.*/s/@modified.*/@modified " .strftime("%c")
-	execute "normal `a"
-endfunction
+	function! PutBrief()
+		exe "so " . stdpath("config") . "/c_brief.txt"
+	endfunction
 
-function! PutBrief()
-	so ~/.config/nvim/c_brief.txt
-endfunction
+	function! PutBriefReturn()
+		exe "so " . stdpath("config") . "/c_brief_return.txt"
+	endfunction
 
-function! PutBriefReturn()
-	so ~/.config/nvim/c_brief_return.txt
-endfunction
+	nnoremap <leader>h :call PutHeader()<CR>
+	nnoremap <leader>bb :call PutBrief()<CR>
+	nnoremap <leader>br :call PutBriefReturn()<CR>
 
-nnoremap <leader>h :call PutHeader()<CR>
-nnoremap <leader>bb :call PutBrief()<CR>
-nnoremap <leader>br :call PutBriefReturn()<CR>
-
-autocmd bufnewfile *.c,*.h,*.cc,*.cpp so ~/.config/nvim/c_header.txt
-autocmd bufnewfile *.c,*.h,*.cc,*.cpp exe "g/@file.*/s//@file " .expand("%")
-autocmd bufnewfile *.c,*.h,*.cc,*.cpp exe "g/@date.*/s//@date " .strftime("%d-%m-%Y")
-autocmd bufnewfile *.c,*.h,*.cc,*.cpp exe "g/Copyright.*/s//Copyright " .strftime("%Y")
-autocmd Bufwritepre,filewritepre *.c,*.h,*.cc,*.cpp execute "normal ma"
-autocmd Bufwritepre,filewritepre *.c,*.h,*.cc,*.cpp  exe "g/@modified.*/s/@modified.*/@modified " .strftime("%c")
-autocmd bufwritepost,filewritepost *.c,*.h,*.cc,*.cpp  execute "normal `a"
+	autocmd bufnewfile *.c,*.h,*.cc,*.cpp exe "so " . stdpath("config") . "/c_header.txt" 
+	autocmd bufnewfile *.c,*.h,*.cc,*.cpp exe "g/@file.*/s//@file " .expand("%")
+	autocmd bufnewfile *.c,*.h,*.cc,*.cpp exe "g/@date.*/s//@date " .strftime("%d-%m-%Y")
+	autocmd bufnewfile *.c,*.h,*.cc,*.cpp exe "g/Copyright.*/s//Copyright " .strftime("%Y")
+	autocmd Bufwritepre,filewritepre *.c,*.h,*.cc,*.cpp execute "normal ma"
+	autocmd Bufwritepre,filewritepre *.c,*.h,*.cc,*.cpp  exe "g/@modified.*/s/@modified.*/@modified " .strftime("%c")
+	autocmd bufwritepost,filewritepost *.c,*.h,*.cc,*.cpp  execute "normal `a"
 " }}}
+endif
