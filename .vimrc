@@ -72,7 +72,7 @@ set smartcase
 set incsearch
 set autowrite autoread
 set hidden
-set clipboard=unnamed
+set clipboard=unnamedplus
 set mouse=a
 
 color srcery
