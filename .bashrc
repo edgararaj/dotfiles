@@ -112,8 +112,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# remove ctrl-s feature
+## ADDED STUFF
+# remove ctrl-s
 stty -ixon
+
+# enable ** for recursive folders
+shopt -s globstar
 
 # set default editor
 EDITOR=vim
@@ -149,5 +153,3 @@ rcd() {
 # exec xorg
 [[ -z $DISPLAY ]] && exec startx
 
-# Created by `userpath` on 2020-12-19 11:59:08
-export PATH="$PATH:/home/edgar/.local/bin"

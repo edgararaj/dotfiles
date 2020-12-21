@@ -23,7 +23,7 @@ runtime! debian.vim
 
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
-syntax on
+"syntax on
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
@@ -31,16 +31,34 @@ syntax on
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
-filetype plugin indent on
+"filetype plugin indent on
+
+" The following are commented out as they cause vim to behave a lot
+" differently from regular Vi. They are highly recommended though.
+"set showcmd		" Show (partial) command in status line.
+"set showmatch		" Show matching brackets.
+"set ignorecase		" Do case insensitive matching
+"set smartcase		" Do smart case matching
+"set incsearch		" Incremental search
+"set autowrite		" Automatically save before commands like :next and :make
+"set hidden		" Hide buffers when they are abandoned
+"set mouse=a		" Enable mouse usage (all modes)
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
+
+"" ADDED STUFF
+" Go to the same line as when exited buffer
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+syntax on
+filetype plugin indent on
 
 " netrw settings
 let g:netrw_banner = 0
@@ -140,4 +158,5 @@ endfun
 
 nnoremap <leader>h :call PutHeader()<CR>
 autocmd bufnewfile *.c,*.h,*.cc,*.cpp call PutHeader()
+
 
