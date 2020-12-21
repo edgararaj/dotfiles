@@ -42,6 +42,10 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+" netrw settings
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+
 let mapleader=" "
 
 set list
