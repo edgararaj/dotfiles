@@ -8,4 +8,5 @@ mkdir -p .vim/
 cp -v ~/.vim/c_header.txt .vim/
 cp -v ~/.bashrc .
 cp -v ~/.gitconfig .
+cp -v ~/.xinitrc .
 
